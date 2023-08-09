@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Data
 @Table(name = "students")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public class Student {
+public  class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +23,5 @@ public class Student {
     String lastName;
     @Column(name = "email")
     String email;
+
 }

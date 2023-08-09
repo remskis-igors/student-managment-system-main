@@ -1,5 +1,5 @@
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="StudentManagmentSystemApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+  <configuration default="false" name="StudentManagementSystemApplication" type="Application" factoryName="Application" nameIsGenerated="true">
     <envs>
       <env name="spring.profiles.active" value="local" />
     </envs>
@@ -7,7 +7,7 @@
     <module name="student-managment-system" />
     <extension name="coverage">
       <pattern>
-        <option name="PATTERN" value="com.paremskis.sms.*" />
+        <option name="PATTERN" value="com.paremskis.sms.collegePersonBuilder.*" />
         <option name="ENABLED" value="true" />
       </pattern>
     </extension>
