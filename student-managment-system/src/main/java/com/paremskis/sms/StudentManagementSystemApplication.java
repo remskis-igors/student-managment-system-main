@@ -7,9 +7,9 @@ import com.paremskis.sms.model.Teacher;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.hibernate.cfg.Configuration;
 
 import java.time.DayOfWeek;
 import java.util.ArrayList;
@@ -18,8 +18,9 @@ import java.util.List;
 @SpringBootApplication
 public class StudentManagementSystemApplication {
 
-@Autowired
-Schedule schedule;
+    @Autowired
+    Schedule schedule;
+
     public static void main(String[] args) {
         // Initialize Hibernate
         Configuration cfg = new Configuration().configure("hibernate.cfg.xml");
@@ -54,8 +55,6 @@ Schedule schedule;
         Classroom mathClassroom = new Classroom("Math Class", teacher1, mathClassStudents, List.of(mathSchedule));
 
 
-
-
         // Database operations using Hibernate
         try (Session session = factory.openSession()) {
             Transaction tx = session.beginTransaction();
@@ -71,14 +70,13 @@ Schedule schedule;
 
             tx.commit();
 
-
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         factory.close();
     }
- //   public static void main(String[] args) {
+    //   public static void main(String[] args) {
 //
 //        Configuration cfg = new Configuration().configure();
 //        try (SessionFactory sessionFactory = cfg.buildSessionFactory();

@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class TeacherTest  {
+public class TeacherTest {
     @Test
     public void testTeacherCreation() {
         Teacher teacher = new Teacher();

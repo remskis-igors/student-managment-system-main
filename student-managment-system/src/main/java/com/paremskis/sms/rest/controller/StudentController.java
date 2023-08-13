@@ -27,7 +27,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class StudentController {
 
     private final StudentService studentService;
-    private final StudentRepository studentRepository ;
+    private final StudentRepository studentRepository;
 
     //handler method to handle list students and return mode view
     @Operation(summary = "get students", description = "gets all students")
@@ -38,36 +38,39 @@ public class StudentController {
 
     @PutMapping()
     public Object putStudent(
-            @RequestBody @Valid AddStudentRequest addStudentRequest){
+            @RequestBody @Valid AddStudentRequest addStudentRequest) {
         studentRepository.save(StudentMapper.map(addStudentRequest));
         return listStudents();
     }
 
-    @PostMapping(value="/")
+    @PostMapping(value = "/")
     public Student addStudent(@Valid @RequestBody Student std) {
         return studentService.save(std);
     }
-    @PutMapping(value="/{id}")
+
+    @PutMapping(value = "/{id}")
     public Student updateStudent(@PathVariable("id") @Min(1) int id, @Valid @RequestBody Student newstd) {
         Student stdu = studentService.findById(id)
-                .orElseThrow(()->new StudentNotFoundException("Student with "+id+" is Not Found!"));
+                .orElseThrow(() -> new StudentNotFoundException("Student with " + id + " is Not Found!"));
         stdu.setFirstName(newstd.getFirstName());
         stdu.setLastName(newstd.getLastName());
         stdu.setEmail(newstd.getEmail());
         return studentService.save(stdu);
     }
-    @GetMapping(value="/{id}")
+
+    @GetMapping(value = "/{id}")
     public Student getStudentById(@PathVariable("id") @Min(1) int id) {
         Student std = studentService.findById(id)
-                .orElseThrow(()->new StudentNotFoundException("Student with "+id+" is Not Found!"));
+                .orElseThrow(() -> new StudentNotFoundException("Student with " + id + " is Not Found!"));
         return std;
     }
-    @DeleteMapping(value="/{id}")
+
+    @DeleteMapping(value = "/{id}")
     public String deleteStudent(@PathVariable("id") @Min(1) int id) {
         Student std = studentService.findById(id)
-                .orElseThrow(()->new StudentNotFoundException("Student with "+id+" is Not Found!"));
+                .orElseThrow(() -> new StudentNotFoundException("Student with " + id + " is Not Found!"));
         studentService.deleteById(std.getId());
-        return "Student with ID :"+id+" is deleted";
+        return "Student with ID :" + id + " is deleted";
     }
 
 }

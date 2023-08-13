@@ -22,7 +22,6 @@
         <!-- Names the annotated entity classes -->
         <mapping class="com.paremskis.sms.model.Student" />
         <mapping class="com.paremskis.sms.model.Teacher" />
-        <mapping class="com.paremskis.sms.model.Schedule" />
     </session-factory>
 </hibernate-configuration>
 <S></S>

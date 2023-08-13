@@ -1,6 +1,3 @@
-
-
-
 import com.paremskis.sms.model.Student;
 import com.paremskis.sms.persistence.StudentRepository;
 import com.paremskis.sms.service.StudentServiceImpl;
@@ -14,8 +11,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import static org.mockito.Mockito.*;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 public class StudentServiceImplTest {
 
@@ -34,7 +31,7 @@ public class StudentServiceImplTest {
     public void testGetAllStudents() {
         // Arrange
         List<Student> students = new ArrayList<>();
-        students.add(new Student(/* Initialize with data */));
+        students.add(new Student());
         when(studentRepository.findAll()).thenReturn(students);
 
         // Act
@@ -49,7 +46,7 @@ public class StudentServiceImplTest {
     public void testFindById_ExistingId() {
         // Arrange
         long studentId = 1;
-        Student student = new Student(/* Initialize with data */);
+        Student student = new Student();
         when(studentRepository.findById(studentId)).thenReturn(Optional.of(student));
 
         // Act
@@ -109,7 +106,7 @@ public class StudentServiceImplTest {
     public void testDeleteById() {
         // Arrange
         long studentId = 1;
-                // Act & Assert
+        // Act & Assert
         assertDoesNotThrow(() -> studentService.deleteById(studentId));
         verify(studentRepository, times(1)).deleteById(studentId);
     }

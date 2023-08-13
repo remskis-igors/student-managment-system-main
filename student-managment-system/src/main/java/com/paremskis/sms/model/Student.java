@@ -10,7 +10,7 @@ import javax.persistence.*;
 @Data
 @Table(name = "students")
 @FieldDefaults(level = AccessLevel.PRIVATE)
-public  class Student {
+public class Student {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
