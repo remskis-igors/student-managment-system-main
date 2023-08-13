@@ -1,6 +1,5 @@
 package com.paremskis.sms.model;
 
-
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.experimental.FieldDefaults;
