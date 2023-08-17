@@ -27,7 +27,7 @@ import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 public class StudentController {
 
     private final StudentService studentService;
-    private final StudentRepository studentRepository;
+    private final StudentRepository studentRepository; //TODO remove
 
     //handler method to handle list students and return mode view
     @Operation(summary = "get students", description = "gets all students")
@@ -39,7 +39,7 @@ public class StudentController {
     @PutMapping()
     public Object putStudent(
             @RequestBody @Valid AddStudentRequest addStudentRequest) {
-        studentRepository.save(StudentMapper.map(addStudentRequest));
+        studentRepository.save(StudentMapper.map(addStudentRequest)); //TODO move business logic to service
         return listStudents();
     }
 
@@ -66,7 +66,7 @@ public class StudentController {
     }
 
     @DeleteMapping(value = "/{id}")
-    public String deleteStudent(@PathVariable("id") @Min(1) int id) {
+    public String deleteStudent(@PathVariable("id") @Min(1) long id) {
         Student std = studentService.findById(id)
                 .orElseThrow(() -> new StudentNotFoundException("Student with " + id + " is Not Found!"));
         studentService.deleteById(std.getId());

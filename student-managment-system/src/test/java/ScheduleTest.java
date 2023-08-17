@@ -11,7 +11,7 @@ public class ScheduleTest {
     @Test
     public void testScheduleCreation() {
         List<String> subjects = Arrays.asList("Math", "Science");
-        Schedule schedule = new Schedule(DayOfWeek.MONDAY, subjects);
+        Schedule schedule = new Schedule().setDayOfWeek(DayOfWeek.MONDAY).setSubjects(subjects);
 
         assertEquals(DayOfWeek.MONDAY, schedule.getDayOfWeek());
         assertEquals(subjects, schedule.getSubjects());

@@ -1,10 +1,11 @@
 package com.paremskis.sms.service;
 
 import com.paremskis.sms.model.Student;
+import com.paremskis.sms.model.Teacher;
 import com.paremskis.sms.persistence.StudentRepository;
+import com.paremskis.sms.persistence.TeacherRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,17 +17,13 @@ import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
 public class StudentServiceImpl implements StudentService {
-    @Autowired
-    private StudentRepository studentRepository;
 
-    public StudentServiceImpl(StudentRepository studentRepository) {
-        super();
-        this.studentRepository = studentRepository;
-    }
+    private final StudentRepository studentRepository;
+
 
     @Override
     public List<Student> getAllStudents() {
-        log.info("Find all products");
+        log.info("Find all students");
         return studentRepository.findAll();
     }
 
@@ -45,6 +42,11 @@ public class StudentServiceImpl implements StudentService {
     public Student save(Student std) {
         log.debug("Save student: " + std);
         return studentRepository.save(std);
+    }
+
+    public void saveAllStudents(List<Student> studentList) {
+        log.debug("Save student list: " + studentList);
+        studentRepository.saveAll(studentList);
     }
 
     @Override
